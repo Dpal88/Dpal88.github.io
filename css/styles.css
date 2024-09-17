@@ -4,19 +4,29 @@
     padding: 0;
 }
 
-/* :root {
-
+:root {
+    --white: #fff;
+    --black: #000;
+    --offWhite: #ecf3f9;
+    --darkGrey: #333;
+    --red: #ff535b;
 }
 
-@font-face {
+/* @font-face {
     font-family: ;
     src: url();
 } */
 
 /* -------- heading -------- */
 header {
-    background: #000;
     height: 80px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    background: #000;
+    /* background: rgba(0, 0, 0, .80);
+    backdrop-filter: blur(5px); */
 }
 
 
@@ -35,29 +45,69 @@ header {
     height: 100%;
 }
 .nav-logo a {
+    font-family: "Montserrat", sans-serif;
     font-size: 24px;
     font-weight: 700;
+
     padding-left: 15px;
+}
+.nav-logo span {
+    transition: color .3s ease-in;
+}
+.nav-logo span:hover {
+    color: var(--red);
 }
 
 .nav-links {
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 5px;
-    background-color: #000;
 
-    display: none;
+    background-color: #000;
+    /* background: rgba(0, 0, 0, .8);
+    backdrop-filter: blur(5px); */
 }
-.nav-links a {
+
+.nav-links span {
     border-bottom: 1px solid #eee;
     padding: 20px 0 20px 15px;
 }
-.nav-links a:first-child {
+.nav-links span:first-child {
     border-top: 1px solid #eee;
 }
 
+.nav-links a {
+    position: relative;
 
-#close-btn {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    /* border-bottom: 1px solid #eee;
+    padding: 20px 0 20px 15px; */
+    /* backdrop-filter: blur(5px); */
+}
+
+/* nav links hover animation */
+.nav-links a:after {
+    content: ''; /* Add content after the element */
+    position: absolute; /* Position absolute for pseudo-element */
+    width: 97%; /* Full width */
+    transform: scaleX(0); /* Initial scale of 0 for underline effect */
+    height: 2px; /* Height of the underline */
+    bottom: -2px; /* Align to bottom */
+    left: 1.5px; /* Align to left */
+    background-color: #ff535b; /* Background color of the underline */
+    transform-origin: bottom right; /* Set transform origin */
+    transition: transform 0.25s ease-out; /* Transition effect for the underline */
+  }
+  
+  .nav-links a:hover:after {
+    transform: scaleX(1); /* Scale the underline on hover */
+    transform-origin: bottom left; /* Set transform origin */
+  }
+
+
+
+#ham-btn {
     position: absolute;
     right: 15px;
     top: 22px;
@@ -75,6 +125,113 @@ header {
     display: none;
 }
 
+/* JS active / hidden classes */
+.hide {
+    display: none;
+}
+.active-flex {
+    display: flex;
+}
+.active-block {
+    display: block;
+}
+
+/* -------- hero -------- */
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: calc(100vh - 80px);
+
+    background: #222;
+    border-bottom: 1px solid #000;
+}
+
+h1 {
+    font-family: "Montserrat", sans-serif;
+    /* font-family: "Bebas Neue", sans-serif; */
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-align: center;
+
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+h2 {
+    font-family: "Hind", sans-serif;
+    font-family: "Bebas Neue", sans-serif;
+    /* font-family: "Montserrat", sans-serif; */
+    font-weight: 600;
+    font-size: 3.2rem;
+    text-align: center;
+    letter-spacing: 2px;
+    line-height: 1;
+
+    color: var(--red);
+
+    margin-top: 10px;
+}
+
+.projects-btn-wrapper {
+    margin-top: 10px;
+}
+.projects-btn-wrapper button {
+    font-family: "Hind", sans-serif;
+    /* font-family: "Montserrat", sans-serif; */
+    font-weight: 700;
+    font-size: 1.4rem;
+
+    padding: 8px 30px;
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: transform .2s ease-in-out;
+}
+
+.projects-btn button:hover {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+    transform: translate3d(0, 3px, 0);
+  }
+  
+  .projects-btn button:focus {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+  }
+
+/* icons */
+.hero-socials-container {
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    bottom: 30px;
+
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.hero-socials-container a {
+    transition: transform .2s ease-in-out;
+}
+.hero-socials-container a:hover {
+    transform: scale(1.1);
+}
+.github-icon-wrapper, .indeed-icon-wrapper {
+    background: #fff;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+
+/* -------- about -------- */
+.about-container {
+    background: #fff;
+    height: 300px;
+}
 
 /* -------- media query 600px? -------- */
 
@@ -92,15 +249,21 @@ header {
         flex-direction: row;
         gap: 10px;
     }
-    .nav-links a {
+
+    .nav-links span, .nav-links span:first-child {
+        border: none;
+        padding: 0;
+    }
+
+    /* .nav-links a {
         border: none;
         padding: 0;
     }
     .nav-links a:first-child {
         border-top: none;
-    }
+    } */
 
-    #nav-close, #close-btn, .close-icon, .ham-icon {
+    #nav-close, #ham-btn, .close-icon, .ham-icon {
         display: none;
     }
 }
