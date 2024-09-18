@@ -229,9 +229,76 @@ h2 {
 
 /* -------- about -------- */
 .about-container {
+    position: relative;
+    margin-top: 50px;
+    padding: 0 40px;
+
     background: #fff;
-    height: 300px;
 }
+.h3-wrapper {
+    text-align: center;
+}
+h3 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2.4px;
+
+    display: inline;
+    border-bottom:3px solid #ff535b;
+}
+.about-container p {
+    font-family: "Hind", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+.about-main-text {
+    position: relative;
+    margin-top: 80px;
+    /* margin: 50px auto 0; */
+}
+.hi-span {
+    position: absolute;
+    top: -40px;
+    left: 0;
+
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+.about-skills-text {
+    margin-top: 30px;
+}
+.imp-info {
+    font-style: italic;
+}
+
+.skills-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    margin-top: 15px;
+}
+.skills-wrapper span {
+    /* display: block; */
+    color: #fff;
+    background-color: #525252;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+
+/* -------- projects -------- */
+
+
+
+
+
+
+
+
+
 
 /* -------- media query 600px? -------- */
 
