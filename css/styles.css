@@ -370,7 +370,7 @@ h3 {
     padding: 0 40px;
     max-width: 1000px;
 }
-.contact-container p {
+.contact-p {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-top: 20px;
@@ -378,7 +378,9 @@ h3 {
 }
 
 form {
+    /* max-width: 460px; */
     margin-top: 50px;
+    /* margin: 50px auto 0; */
     padding: 24px 20px;
     border-radius: 10px;
     background: #222;
@@ -430,6 +432,30 @@ form button:hover {
 form button:focus {
     box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }
+
+/* --- form error --- */
+
+.error-icon {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 10px;
+    top: 39px;
+
+    display: none;
+}
+.error-text {
+    color: hsl(0, 100%, 74%);
+    margin-top: 5px;
+    text-align: right;
+    font-style: italic;
+
+    display: none;
+}
+.active {
+    display: block;
+}
+
 
 /* -------- media query 600px? -------- */
 

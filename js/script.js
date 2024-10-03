@@ -1,7 +1,129 @@
+// hamburger menu variables
 const hamBtn = document.querySelector('#ham-btn');
 const hamIcon = document.querySelector("#ham-icon");
 const closeIcon = document.querySelector('#close-icon');
 const navLinks = document.querySelector('#nav-links');
+
+// form input variables
+const inputMsg = document.querySelector('textarea');
+const nameInput = document.querySelector('input[type=text]');
+const emailInput = document.querySelector('input[type=email]');
+const formButton = document.querySelector('form button');
+
+// form input functions ----------------------------------------------------------------------------------
+
+// if input that is passed into function has not been filled out,
+// then show error icon and error text. else remove error icon / text.
+function active (input) {
+    if (input.value === "") {
+            
+        input.style.border = '1px solid hsl(0, 100%, 74%)';
+        // targets error icon
+        input.nextElementSibling.classList.add('active');
+        // targets error text
+        input.nextElementSibling.nextElementSibling.classList.add('active');
+
+    } else {
+
+        input.style.border = '1px solid #DEDEDE';
+        input.nextElementSibling.classList.remove('active');
+        input.nextElementSibling.nextElementSibling.classList.remove('active');
+
+    }
+}
+
+
+/**
+ * if user types anything but tab, then remove error icon / text.
+ * else if user presses tab then run function for input that checks if 
+ * input field is filled out or filled out correctly
+ * 
+ * 
+ * @param {function} callback - callback function that will check if input field is filled out or correctly formatted
+ * @param {string} key - event.key
+ * @param {object} target - event.target
+ */
+function keyPress(callback, key, target) {
+    if (key != 'Tab') {
+        target.nextElementSibling.classList.remove('active');
+        target.nextElementSibling.nextElementSibling.classList.remove('active');
+    } else {
+        callback;
+    }
+}
+
+function checkEmailInput () {
+    // if returns true
+    // The presence of an “@” symbol, separating the local part from the domain part.
+    // The presence of a domain part with at least one dot, indicating a domain extension.
+    // No leading, trailing, or consecutive whitespace characters within the email address.
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+
+        emailInput.style.border = '1px solid #DEDEDE';
+        emailInput.nextElementSibling.classList.remove('active');
+        emailInput.nextElementSibling.classList.remove('active');
+
+    } else if (emailInput.value === "") {
+
+        emailInput.style.border = '1px solid hsl(0, 100%, 74%)';
+        // targets error icon
+        emailInput.nextElementSibling.classList.add('active');
+        // targets error text
+        emailInput.nextElementSibling.nextElementSibling.classList.add('active');
+        emailInput.nextElementSibling.nextElementSibling.textContent = "Please enter your email.";
+
+    } else {
+
+        emailInput.style.border = '1px solid hsl(0, 100%, 74%)';
+        // targets error icon
+        emailInput.nextElementSibling.classList.add('active');
+        // targets error text
+        emailInput.nextElementSibling.nextElementSibling.classList.add('active');
+        emailInput.nextElementSibling.nextElementSibling.textContent = "Email is not valid.";
+
+    }
+}
+
+// form input event listeners ----------------------------------------------------------------------------------
+
+formButton.addEventListener('click', e => {
+    e.preventDefault();
+
+    // checks name input
+    active(nameInput);
+    // checks textarea element
+    active(inputMsg);
+    // checks for a valid email
+    checkEmailInput();
+
+    // if form does not have any errors than send email
+
+    console.log('button clicked');
+})
+
+
+
+nameInput.addEventListener('keydown', e => {
+    const target = e.target;
+    const key = e.key;
+    console.log(typeof target);
+    console.log(typeof key);
+    keyPress(active(target), key, target);
+})
+
+emailInput.addEventListener('keydown', e => {
+    const target = e.target;
+    const key = e.key;
+    keyPress(checkEmailInput(), key, target);
+})
+
+inputMsg.addEventListener('keydown', e => {
+    const target = e.target;
+    const key = e.key;
+    keyPress(active(target), key, target);
+})
+
+// hamburger menu functions ----------------------------------------------------------------------------------
 
 function hamburgerMenu () {
 
