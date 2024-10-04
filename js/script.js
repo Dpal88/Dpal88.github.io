@@ -97,7 +97,6 @@ function checkFormValidation() {
         } else {
             console.log('Your message has been submitted!');
             contactForm.submit();
-            contactForm.reset();
         }
     })
 }
@@ -117,7 +116,7 @@ formButton.addEventListener('click', e => {
     // if form does not have any errors than send email
     // inputs.forEach(submitForm);
     checkFormValidation();
-
+    contactForm.reset();
     console.log('button clicked');
 })
 
