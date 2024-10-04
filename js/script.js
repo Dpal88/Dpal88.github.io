@@ -9,6 +9,8 @@ const inputMsg = document.querySelector('textarea');
 const nameInput = document.querySelector('input[type=text]');
 const emailInput = document.querySelector('input[type=email]');
 const formButton = document.querySelector('form button');
+const contactForm = document.querySelector('form');
+const inputs = [nameInput, emailInput, inputMsg];
 
 // form input functions ----------------------------------------------------------------------------------
 
@@ -84,6 +86,22 @@ function checkEmailInput () {
     }
 }
 
+// Loops through the inputs array and checks if any of the inputs
+// nextElementSibling has a class of 'active'
+// ( which indicates a form has not been filled out or is not correctly filled out ).
+// else submit form and reset all input values
+function checkFormValidation() {
+    inputs.forEach(input => {
+        if ( input.nextElementSibling.classList.contains('active') ) {
+            console.log('Please make sure all fields are correctly filled out!')
+        } else {
+            console.log('Your message has been submitted!');
+            contactForm.submit();
+            contactForm.reset();
+        }
+    })
+}
+
 // form input event listeners ----------------------------------------------------------------------------------
 
 formButton.addEventListener('click', e => {
@@ -97,6 +115,8 @@ formButton.addEventListener('click', e => {
     checkEmailInput();
 
     // if form does not have any errors than send email
+    // inputs.forEach(submitForm);
+    checkFormValidation();
 
     console.log('button clicked');
 })

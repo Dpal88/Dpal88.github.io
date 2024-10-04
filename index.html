@@ -158,7 +158,8 @@
         </div>
         <p class="contact-p">Feel free to contact me by using the form below, and I will get back to you as soon as possible!</p>
 
-        <form action="">
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="0a36f641-8841-4807-b444-e7293cf2ec0f">
             <div class="input-wrapper">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter Your Name">
@@ -177,7 +178,7 @@
                 <img class="error-icon" src="icons/icon-error.svg" alt="error icon">
                 <p class="error-text">Please enter your message.</p>
             </div>
-            <button>SUBMIT</button>
+            <button type="submit">SUBMIT</button>
         </form>
 
     </section>
