@@ -87,18 +87,25 @@ function checkEmailInput () {
 }
 
 // Loops through the inputs array and checks if any of the inputs
-// nextElementSibling has a class of 'active'
-// ( which indicates a form has not been filled out or is not correctly filled out ).
-// else submit form and reset all input values
-function checkFormValidation() {
+// nextElementSibling has a class of 'active', else add 1 to num variable.
+// if all inputs are correctly filled out, num will = 3 and form will submit.
+function formValidation() {
+    let num = 0;
     inputs.forEach(input => {
         if ( input.nextElementSibling.classList.contains('active') ) {
             console.log('Please make sure all fields are correctly filled out!')
+            return false;
         } else {
-            console.log('Your message has been submitted!');
-            contactForm.submit();
+            num ++;
         }
     })
+    console.log(num);
+    if (num === 3) {
+        contactForm.submit();
+        setTimeout( () => {
+            contactForm.reset();
+        }, 1000)
+    }
 }
 
 // form input event listeners ----------------------------------------------------------------------------------
@@ -114,9 +121,8 @@ formButton.addEventListener('click', e => {
     checkEmailInput();
 
     // if form does not have any errors than send email
-    // inputs.forEach(submitForm);
-    checkFormValidation();
-    contactForm.reset();
+    formValidation();
+
     console.log('button clicked');
 })
 
@@ -125,8 +131,6 @@ formButton.addEventListener('click', e => {
 nameInput.addEventListener('keydown', e => {
     const target = e.target;
     const key = e.key;
-    console.log(typeof target);
-    console.log(typeof key);
     keyPress(active(target), key, target);
 })
 
