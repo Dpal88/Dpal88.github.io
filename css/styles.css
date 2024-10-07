@@ -212,8 +212,7 @@ h2 {
     position: absolute;
     bottom: 30px;
 
-    border: 1px solid #fff;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     padding: 10px;
 }
 
@@ -459,6 +458,70 @@ form button:focus {
 }
 
 
+/* -------- footer -------- */
+footer {
+    background: #000;
+    font-family: "Hind", sans-serif;
+
+    margin-top: 80px;
+    padding: 40px 0 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer-socials {
+    display: flex;
+    gap: 5px;
+}
+.footer-socials a {
+    width: 40px;
+    height: 40px;
+}
+.footer-socials svg {
+    width: 40px;
+    height: 40px;
+}
+.footer-socials a {
+    transition: transform .2s ease-in-out;
+}
+.footer-socials a:hover {
+    transform: scale(1.1);
+}
+footer p {
+    color: #fff;
+    font-size: 0.8rem;
+
+    margin: 20px 0;
+}
+footer p a {
+    color: var(--red);
+    font-weight: 700;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    transition: color 0.5s ease-in-out;
+}
+footer p a::before {
+    background-color: var(--red);
+    content: "";
+    inset: 0;
+    position: absolute;
+    /* Can change scaleY to scaleX for different effect, along with changing origin*/
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
+}
+footer p a:hover {
+    color: #000;
+}
+footer p a:hover::before {
+    /* Can change scaleY to scaleX for different effect, along with changing origin*/
+    transform: scaleY(1);
+    transform-origin: bottom;
+}
+
 /* -------- media query 600px? -------- */
 
 @media (min-width: 600px) {
@@ -489,6 +552,7 @@ form button:focus {
         width: 400px;
         height: 400px;
     }
+
 }
 
 @media (min-width: 900px) {
