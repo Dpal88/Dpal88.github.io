@@ -131,6 +131,8 @@ header {
 
     background: none;
     border: none;
+
+    cursor: pointer;
 }
 
 .close-icon {
