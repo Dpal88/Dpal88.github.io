@@ -18,6 +18,10 @@ body {
     --red: #ff535b;
 }
 
+@font-face {
+    font-family: BebasNeue;
+    src: url(../fonts/BebasNeue-Regular.ttf);
+}
 
 /* changes landing position for page sections */
 .anchor {
@@ -159,7 +163,7 @@ h1 {
     text-align: center;
 }
 h2 {
-    font-family: "Bebas Neue", sans-serif;
+    font-family: BebasNeue, sans-serif;
     color: var(--red);
     font-weight: 600;
     font-size: 3.2rem;
