@@ -124,7 +124,6 @@ formButton.addEventListener('click', e => {
     // if form does not have any errors than send email
     formValidation();
 
-    console.log('button clicked');
 })
 
 
@@ -175,15 +174,29 @@ anchors.forEach(anchor => {
 
 hamBtn.addEventListener('click', e => {
 
-    // hamburgerMenu();
     hamMenuActive();
 })
 
 
 // addEventListener("resize", (e) => {
-//     changeScreenClass();
 //     screenResize();
-//     changeScreen();
 // })
 
-// try enabling navLinks with classes instead of setting style inline
+
+
+// cards slide animation ----------------------------------------------------------------------------------
+
+const observer = new IntersectionObserver( (entries) => {
+    entries.forEach( (entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');
+        }
+    })
+})
+
+const cards = document.querySelectorAll('.card');
+cards.forEach( (card) => {
+    observer.observe(card);
+})
